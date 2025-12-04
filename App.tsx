@@ -317,8 +317,8 @@ const App: React.FC = () => {
   // --- LOGIN SCREEN ---
   if (!isLoggedIn) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-white border border-gray-300 shadow-xl rounded-2xl p-8">
+      <div className="min-h-screen bg-white flex items-center justify-center p-4 relative">
+        <div className="max-w-md w-full bg-white border border-gray-300 shadow-xl rounded-2xl p-8 z-10">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-black mb-2">Đăng Nhập</h1>
             <p className="text-gray-600">Hệ thống quản lý Ticket</p>
@@ -326,15 +326,35 @@ const App: React.FC = () => {
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
               <label className="block text-sm font-bold text-black mb-2">Tài khoản</label>
-              <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-black focus:ring-1 focus:ring-black outline-none transition-colors" placeholder="Nhập tài khoản" required />
+              <input 
+                type="text" 
+                value={username} 
+                onChange={(e) => setUsername(e.target.value)} 
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-green-600 focus:ring-1 focus:ring-green-600 outline-none transition-colors text-green-600 font-semibold" 
+                placeholder="Nhập tài khoản" 
+                required 
+              />
             </div>
             <div>
               <label className="block text-sm font-bold text-black mb-2">Mật khẩu</label>
-              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-black focus:ring-1 focus:ring-black outline-none transition-colors" placeholder="Nhập mật khẩu" required />
+              <input 
+                type="password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-green-600 focus:ring-1 focus:ring-green-600 outline-none transition-colors text-green-600 font-semibold" 
+                placeholder="Nhập mật khẩu" 
+                required 
+              />
             </div>
             {loginError && <div className="text-red-600 text-sm text-center bg-red-50 p-2 rounded">{loginError}</div>}
             <button type="submit" className="w-full bg-black text-white font-bold py-3 rounded-lg hover:bg-gray-800 transition-colors shadow-lg">Đăng nhập</button>
           </form>
+          
+          <div className="mt-8 pt-6 border-t border-gray-100 text-center">
+             <p className="text-sm text-gray-500 italic">
+               Viết bởi AI và tư vấn của chuyên gia: <span className="font-bold text-blue-700 not-italic">Trần Văn Hòa</span>
+             </p>
+          </div>
         </div>
       </div>
     );
@@ -509,7 +529,7 @@ const App: React.FC = () => {
                  {/* Attachment List */}
                  {formData.attachments && formData.attachments.length > 0 && (
                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
-                      {formData.attachments.map((att) => (
+                      {formData.attachments.map((att, idx) => (
                         <div key={att.id} className="relative group border border-gray-200 rounded-lg overflow-hidden bg-white">
                            <button type="button" onClick={() => removeAttachment(att.id)} className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity z-10">
                               <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
