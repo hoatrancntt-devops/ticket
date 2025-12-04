@@ -1,0 +1,5 @@
+{
+  "name": "Ticket Master - Hệ thống quản lý yêu cầu",
+  "description": "Ứng dụng quản lý ticket hỗ trợ nhập liệu, theo dõi trạng thái và xuất báo cáo Excel.",
+  "requestFramePermissions": []
+}
